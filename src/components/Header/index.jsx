@@ -1,27 +1,40 @@
-import { Container, Profile } from './styles';
-import { useAuth } from '../../hooks/auth'
-import { Input } from '../Input';
-import { Button } from '../Button'
-import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+import { RiShutDownLine} from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
+import { Container, Profile, Logout } from './styles';
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 
+export function Header(){
+  const { signOut, user } = useAuth();
+  const navigation = useNavigate();
 
-export function Header({children}){
+  function handleSignOut(){
+    navigation("/")
+    signOut();
+  }
 
-  const {signOut, user } = useAuth();
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
   return(
     <Container>
-      <h1>RocketMovies</h1>
-      {children}
-      <div>
-        <Profile to="/profile">
-            <span>{user.name}</span>
-            <img src={avatarUrl} alt={user.name} />
-        </Profile>
-        <Button title="sair" onClick={signOut} />
-      </div>
+      <Profile to="/profile">
+        <img 
+          src={avatarUrl}
+          alt={user.name}
+        />
+
+        <div>
+          <span>Bem-vindo</span>
+          <strong>{user.name}</strong>
+        </div>
+
+      </Profile>
+      
+      <Logout onClick={handleSignOut}>
+        <RiShutDownLine/>
+      </Logout>
+
     </Container>
-  );
+  )
 }

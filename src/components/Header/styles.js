@@ -1,74 +1,59 @@
-import styled from "styled-components";
 import { Link } from 'react-router-dom';
+
+import styled from 'styled-components';
 
 export const Container = styled.header`
   grid-area: header;
-  height: 116px;
-  width: 100%;
 
-  border-bottom-width: 1px;
+  height:105px;
+  width:100%;
+
+  border-bottom-width:1px;
   border-bottom-style: solid;
-  border-bottom-color: ${({ theme }) => theme.COLORS.HEADER_BORDER};
+  border-bottom-color: ${( {theme} ) => theme.COLORS.BACKGROUND_700};
 
   display: flex;
-  gap: 64px;
   justify-content: space-between;
-  align-items: center;
+
   padding: 0 80px;
-
-  > h1{
-    font-size: 24px;
-    font-weight: 700;
-    color: ${({ theme }) => theme.COLORS.PINK_100};
-  }
-
-  >div{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end
-  }
-
-  button{
-      position: relative;
-      margin-top: -20px;
-      margin-right: 65px;
-      height: auto;
-      width: 30px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      color: ${({ theme }) => theme.COLORS.GRAY_100};
-      background-color: transparent;
-    }
 
 `;
 
 export const Profile = styled(Link)`
-
   display: flex;
   align-items: center;
-  gap: 8px;
 
-  > img{
-    width: 64px;
-    height: 64px;
+  > img {
+    width: 56px;
+    height: 56px;
+
     border-radius: 50%;
-    border: 2px solid ${({ theme }) => theme.COLORS.HEADER_BORDER};
   }
 
+  > div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    line-height: 24px;
+
     span{
-
-      //limite caracteres nome
-      max-width: 30ch;
-      overflow: hidden;
-      text-overflow: none;
-      white-space: nowrap;
-
-      min-width: 130px;
-      font-size: 14px;
-      font-weight: 700;
-      color: ${({ theme }) => theme.COLORS.WHITE};
-      text-align: right;
+      font-size:14px;
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
     }
 
+    strong{
+      font-size:18px;
+      color: ${({ theme }) => theme.COLORS.WHITE};
+    }
+  }
+`;
+
+export const Logout = styled.button`
+  border: none;
+  background: none;
+
+  > svg {
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
+    font-size: 36px;
+  }
 `;

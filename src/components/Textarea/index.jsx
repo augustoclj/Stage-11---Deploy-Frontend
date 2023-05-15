@@ -1,10 +1,9 @@
 import { Container } from './styles';
 
-export function Textarea({icon: Icon, ...rest}){
+export function Textarea({ value, ...rest}){
   return(
-    <Container>
-      { Icon && <Icon size={20} /> }
-      <textarea {...rest} />
+    <Container {...rest}>
+      { value }
     </Container>
   );
 }
